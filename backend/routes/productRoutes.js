@@ -17,7 +17,7 @@ router.get(
     }),
 );
 
-// @desc    Fetch a Product
+// @desc    Fetch a Product by productID
 // @route   GET /api/products/:id
 // @access  Public
 router.get(
@@ -27,8 +27,10 @@ router.get(
 
         if (product) {
             return res.send(product);
+        } else {
+            res.status(404);
+            throw new Error('Product not found');
         }
-        return res.status(404).send({ message: 'Product no found' });
     }),
 );
 
