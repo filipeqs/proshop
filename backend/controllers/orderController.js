@@ -3,6 +3,7 @@ import asyncHandler from 'express-async-handler';
 import Order from '../models/orderModel.js';
 
 const addOrderItems = asyncHandler(async (req, res) => {
+    console.log(req.body);
     const {
         orderItems,
         shippingAddress,
@@ -28,7 +29,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
             totalPrice,
         });
 
-        const createdOrder = await order.save;
+        const createdOrder = await order.save();
         return res.status(201).send(createdOrder);
     }
 });
