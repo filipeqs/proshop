@@ -3,10 +3,11 @@ import express from 'express';
 import {
     authUser,
     getUserProfile,
+    getUsers,
     registerUser,
     updateUserProfile,
 } from '../controllers/userController.js';
-import { protect } from '../middleware/authMiddleware.js';
+import { protect, admin } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
@@ -28,5 +29,10 @@ router.route('/').post(registerUser);
 // @route   PUT /api/users/profile
 // @access  Private
 router.route('/profile').get(protect, getUserProfile).put(protect, updateUserProfile);
+
+// @desc    Get all Users
+// @route   GET /api/users
+// @access  Public/Admin
+router.route('/').get(protect, admin, getUsers);
 
 export default router;
