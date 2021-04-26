@@ -2,6 +2,7 @@ import express from 'express';
 
 import {
     authUser,
+    deleteUser,
     getUserProfile,
     getUsers,
     registerUser,
@@ -32,7 +33,12 @@ router.route('/profile').get(protect, getUserProfile).put(protect, updateUserPro
 
 // @desc    Get all Users
 // @route   GET /api/users
-// @access  Public/Admin
+// @access  Private/Admin
 router.route('/').get(protect, admin, getUsers);
+
+// @desc    Delete User
+// @route   DELETE /api/users/:id
+// @access  Private/Admin
+router.route('/:id').delete(protect, admin, deleteUser);
 
 export default router;
