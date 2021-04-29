@@ -62,6 +62,7 @@ export const productDeleteReducer = (state = {}, action) => {
             return {
                 ...state,
                 loading: true,
+                success: false,
             };
         case PRODUCT_DELETE_SUCCESS:
             return {
@@ -73,6 +74,7 @@ export const productDeleteReducer = (state = {}, action) => {
             return {
                 ...state,
                 loading: false,
+                success: false,
                 error: action.payload,
             };
         default:

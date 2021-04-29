@@ -8,6 +8,7 @@ import {
     PRODUCT_DETAILS_FAIL,
     PRODUCT_DELETE_REQUEST,
     PRODUCT_DELETE_FAIL,
+    PRODUCT_DELETE_SUCCESS,
 } from '../constants/productConstants';
 
 export const getProducts = () => async (dispatch) => {
@@ -69,7 +70,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
         await axios.delete(`/api/products/${id}`, config);
 
         dispatch({
-            type: PRODUCT_DETAILS_SUCCESS,
+            type: PRODUCT_DELETE_SUCCESS,
         });
     } catch (error) {
         dispatch({
