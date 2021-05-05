@@ -8,6 +8,7 @@ import {
     deleteProduct,
     updateProduct,
     createProduct,
+    createProductReview,
 } from '../controllers/productControler.js';
 
 const router = express.Router();
@@ -37,5 +38,10 @@ router
     .get(getProductById)
     .put(protect, admin, updateProduct)
     .delete(protect, admin, deleteProduct);
+
+// @desc    Create new Review
+// @route   POST /api/products/:id/reviews
+// @access  Private
+router.route('/:id/reviews').post(protect, createProductReview);
 
 export default router;
