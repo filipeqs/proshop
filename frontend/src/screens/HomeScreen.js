@@ -8,14 +8,16 @@ import Loader from '../components/Loader';
 
 import { getProducts } from '../redux/actions/productActions';
 
-const HomeScreen = () => {
+const HomeScreen = ({ match }) => {
+    const keyword = match.params.keyword;
+
     const dispatch = useDispatch();
     const productList = useSelector((state) => state.productList);
     const { loading, error, products } = productList;
 
     useEffect(() => {
-        dispatch(getProducts());
-    }, [dispatch]);
+        dispatch(getProducts(keyword));
+    }, [dispatch, keyword]);
 
     return (
         <Fragment>
