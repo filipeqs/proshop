@@ -23,6 +23,11 @@ const router = express.Router();
 // @access  Private/Admin
 router.route('/').get(getProducts).post(protect, admin, createProduct);
 
+// @desc    Get top rated products
+// @route   GET /api/products/top
+// @access  Public
+router.get('/top', getTopProducts);
+
 // @desc    Fetch a Product by productID
 // @route   GET /api/products/:id
 // @access  Public
@@ -44,10 +49,5 @@ router
 // @route   POST /api/products/:id/reviews
 // @access  Private
 router.route('/:id/reviews').post(protect, createProductReview);
-
-// @desc    Get top rated products
-// @route   GET /api/products/top
-// @access  Public
-router.route('/top').get(getTopProducts);
 
 export default router;
