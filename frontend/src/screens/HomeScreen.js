@@ -7,6 +7,7 @@ import Message from '../components/Message';
 import Loader from '../components/Loader';
 import Paginate from '../components/Paginate';
 import ProductCarousel from '../components/ProductCarousel';
+import Meta from '../components/Meta';
 
 import { getProducts } from '../redux/actions/productActions';
 
@@ -25,6 +26,7 @@ const HomeScreen = ({ match }) => {
 
     return (
         <Fragment>
+            <Meta />
             {!keyword && <ProductCarousel />}
             <h1>Latest Products</h1>
             {loading ? (
